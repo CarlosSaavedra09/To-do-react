@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './Todolist.css';
 import trash from './icon-trash.svg';
 import edit from './icon-pen.svg';
+import save from './icon-disk.svg';
 
 const TodoList = () => {
 	const [todos, setTodos] = useState([]);
@@ -25,15 +26,6 @@ const TodoList = () => {
 		setTodos(newTodos);
 	};
 
-	// const handleEditTodo = (index) => {
-	// 	const newTodos = todos.map((todo, i) => {
-	// 		if (i === index) {
-	// 			return prompt('Edit task', todo);
-	// 		}
-	// 		return todo;
-	// 	});
-	// 	setTodos(newTodos);
-	// };
 	const handleEditTodo = (index) => {
 		setEditIndex(index);
 		setEditValue(todos[index]);
@@ -62,13 +54,18 @@ const TodoList = () => {
 					{todos.map((todo, index) => (
 						<li key={index} className="todo-item">
 							{editIndex === index ? (
-								<input
-									type="text"
-									value={editValue}
-									onChange={handleEditChange}
-									onBlur={() => handleEditConfirm(index)}
-									autoFocus
-								/>
+								<>
+									<input
+										type="text"
+										value={editValue}
+										onChange={handleEditChange}
+										onBlur={() => handleEditConfirm(index)}
+										autoFocus
+									/>
+									<button>
+										<img src={save} alt="save task" />
+									</button>
+								</>
 							) : (
 								<>
 									<span>{todo}</span>
