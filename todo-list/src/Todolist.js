@@ -47,8 +47,16 @@ const TodoList = () => {
 			<h1>LKMX - Front-end</h1>
 			<div className="todo-box">
 				<h2>To Do List</h2>
-				<input type="text" value={inputValue} onChange={handleInputChange} placeholder="Escribe una tarea" />
-				<button onClick={handleAddTodo}>Agregar</button>
+				<div className="add-todo">
+					<input
+						type="text"
+						value={inputValue}
+						onChange={handleInputChange}
+						placeholder="Escribe una tarea"
+					/>
+					<button onClick={handleAddTodo}>Agregar</button>
+				</div>
+
 				<ul>
 					{todos.length === 0 && <li>No hay tareas</li>}
 					{todos.map((todo, index) => (
